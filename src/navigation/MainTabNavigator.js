@@ -7,6 +7,7 @@ import HomeScreen from '../screens/HomeScreen'
 import SearchScreen from '../screens/SearchScreen'
 import ProfileScreen from '../screens/ProfileScreen'
 import ChatScreen from '../screens/ChatScreen'
+import RaffleScreen from '../screens/RaffleScreen'
 
 const HomeStack = createStackNavigator({
     Home: HomeScreen,
@@ -37,8 +38,8 @@ SearchStack.navigationOptions = {
             focused={focused}
             name={
                 Platform.OS === 'ios'
-                    ? 'ios-search'
-                    : 'md-search'
+                    ? 'ios-heart-empty'
+                    : 'md-heart-empty'
             }
         />
     ),
@@ -80,10 +81,39 @@ ChatStack.navigationOptions = {
     ),
 }
 
+const RaffleStack = createStackNavigator({
+    Settings: RaffleScreen,
+})
+
+RaffleStack.navigationOptions = {
+    tabBarLabel: 'Participa',
+    tabBarIcon: ({focused}) => (
+        <TabBarIcon
+            focused={focused}
+            name={Platform.OS === 'ios' ? 'ios-gift' : 'md-gift'}
+        />
+    ),
+}
+
+const CouponStack = createStackNavigator({
+    Settings: ChatScreen,
+})
+
+CouponStack.navigationOptions = {
+    tabBarLabel: 'Cupones',
+    tabBarIcon: ({focused}) => (
+        <TabBarIcon
+            focused={focused}
+            name={Platform.OS === 'ios' ? 'ios-bookmark' : 'md-bookmark'}
+        />
+    ),
+}
+
 export default createBottomTabNavigator({
     HomeStack,
-    SearchStack,
     ChatStack,
+    SearchStack,
+    RaffleStack,
     ProfileStack,
 }, {
     tabBarOptions: {

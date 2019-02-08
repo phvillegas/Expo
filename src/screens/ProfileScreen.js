@@ -50,16 +50,16 @@ export default class ProfileScreen extends Component {
                             <View style={{flex: 3}}>
                                 <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
                                     <View style={{alignItems: 'center'}}>
-                                        <Text style={{fontSize: 15, fontWeight: 'bold'}}>91</Text>
+                                        <Text style={{fontSize: 15, fontWeight: 'bold'}}>93</Text>
                                         <Text style={{fontSize: 13, color: 'grey'}}>posts</Text>
                                     </View>
                                     <View style={{alignItems: 'center'}}>
-                                        <Text style={{fontSize: 15, fontWeight: 'bold'}}>82</Text>
-                                        <Text style={{fontSize: 13, color: 'grey'}}>followers</Text>
+                                        <Text style={{fontSize: 15, fontWeight: 'bold'}}>83</Text>
+                                        <Text style={{fontSize: 13, color: 'grey'}}>seguidores</Text>
                                     </View>
                                     <View style={{alignItems: 'center'}}>
-                                        <Text style={{fontSize: 15, fontWeight: 'bold'}}>65</Text>
-                                        <Text style={{fontSize: 13, color: 'grey'}}>following</Text>
+                                        <Text style={{fontSize: 15, fontWeight: 'bold'}}>67</Text>
+                                        <Text style={{fontSize: 13, color: 'grey'}}>seguidos</Text>
                                     </View>
                                 </View>
                                 <View style={{flexDirection: 'row', paddingTop: 10}}>

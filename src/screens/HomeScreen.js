@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
-import {StyleSheet, View, ScrollView, Text} from 'react-native'
+import {StyleSheet, View, ScrollView, Text, Linking} from 'react-native'
 import {Icon, Container, Content, Thumbnail} from 'native-base'
 import CardComponent from '../components/CardComponent'
 
 export default class HomeScreen extends Component {
     static navigationOptions = {
-        title: 'Instagram',
+        title: 'GuascaFM',
         headerLeft: <Icon name="ios-camera" style={{paddingLeft: 10}} />,
-        headerRight: <Icon name="ios-send" style={{paddingRight: 10}} />,
+        headerRight: <Icon name="ios-call" style={{paddingRight: 10}} onPress={() => {Linking.openURL(`tel:123333`)}} />,
     }
 
     render() {
@@ -37,7 +37,7 @@ export default class HomeScreen extends Component {
                                         numberOfLines={1}
                                         style={{fontSize: 13, color: 'grey', paddingLeft: 2, paddingRight: 2, fontWeight: '100'}}
                                     >
-                                        Your Story
+                                        Tú hisroria
                                     </Text>
                                 </View>
 
