@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
-import {Container, Tab, Tabs, TabHeading, Icon, Text} from 'native-base'
+import {ScrollView} from 'react-native'
+import {Container, Tab, Tabs, Text} from 'native-base'
+import CardComponent from '../components/CardComponent'
 
 export default class RaffleScreen extends Component {
     static navigationOptions = {
@@ -9,21 +11,16 @@ export default class RaffleScreen extends Component {
     render() {
         return (
             <Container>
-                <Tabs>
-                    <Tab heading={
-                        <TabHeading>
-                            <Icon name="calendar"/>
-                            <Text>Sorteos</Text>
-                        </TabHeading>
-                    }>
-                        <Text>Tab 1</Text>
+                <Tabs initialPage={0}>
+                    <Tab heading="Sorteos" activeTextStyle={{color: '#000'}}>
+                        <ScrollView>
+                            <CardComponent/>
+                            <CardComponent/>
+                            <CardComponent/>
+                            <CardComponent/>
+                        </ScrollView>
                     </Tab>
-                    <Tab heading={
-                        <TabHeading>
-                            <Icon name="ios-basket"/>
-                            <Text>Cupones</Text>
-                        </TabHeading>
-                    }>
+                    <Tab heading="Cupones" activeTextStyle={{color: '#000'}}>
                         <Text>Tab 2</Text>
                     </Tab>
                 </Tabs>
