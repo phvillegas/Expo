@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Image, Dimensions} from 'react-native'
+import {Image} from 'react-native'
 import {Card, CardItem, Left, Right, Thumbnail, Button, Icon, Body, Text} from 'native-base'
 
 class CardComponent extends Component {

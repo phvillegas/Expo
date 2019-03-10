@@ -7,7 +7,9 @@ import HomeScreen from '../screens/HomeScreen'
 import SearchScreen from '../screens/SearchScreen'
 import ProfileScreen from '../screens/ProfileScreen'
 import ChatScreen from '../screens/ChatScreen'
-import RaffleScreen from '../screens/RaffleScreen'
+import JoinScreen from '../screens/JoinScreen'
+
+import Chat from '../screens/Views/Chat'
 
 const HomeStack = createStackNavigator({
     Home: HomeScreen,
@@ -81,11 +83,11 @@ ChatStack.navigationOptions = {
     ),
 }
 
-const RaffleStack = createStackNavigator({
-    Settings: RaffleScreen,
+const JoinStack = createStackNavigator({
+    Settings: JoinScreen,
 })
 
-RaffleStack.navigationOptions = {
+JoinStack.navigationOptions = {
     tabBarLabel: 'Participa',
     tabBarIcon: ({focused}) => (
         <TabBarIcon
@@ -109,15 +111,27 @@ CouponStack.navigationOptions = {
     ),
 }
 
-export default createBottomTabNavigator({
+const bottomTabNavigator = createBottomTabNavigator({
     HomeStack,
     ChatStack,
     SearchStack,
-    RaffleStack,
+    JoinStack,
     ProfileStack,
 }, {
     tabBarOptions: {
         showLabel: false,
         showIcon: true,
     }
+})
+
+export default createStackNavigator({
+    Main: {
+        screen: bottomTabNavigator,
+    },
+    ChatView: {
+        screen: Chat,
+    },
+},
+{
+    headerMode: 'node',
 })
