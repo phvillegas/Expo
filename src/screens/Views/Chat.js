@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
-import {StyleSheet, ActivityIndicator, View} from 'react-native'
-import {GiftedChat, InputToolbar} from 'react-native-gifted-chat'
+import {ActivityIndicator, View, KeyboardAvoidingView, Platform} from 'react-native'
+import {GiftedChat, InputToolbar, Send} from 'react-native-gifted-chat'
 import {Container, Header, Left, Right, Button, Icon, Text, Thumbnail} from 'native-base'
 
 class Chat extends Component {
     state = {
         messages: [],
-    };
+    }
 
     componentWillMount() {
         //https://stackoverflow.com/a/54550286/1458375
@@ -17,8 +17,9 @@ class Chat extends Component {
                         _id: Math.round(Math.random() * 1000000),
                         text: '0 message',
                         createdAt: new Date(),
-                        system: true
-                    }]
+                        system: true,
+                    }
+                ]
             })
         }
         this.setState({
@@ -31,6 +32,8 @@ class Chat extends Component {
                         _id: 1,
                         name: 'Developer',
                     },
+                    sent: true,
+                    received: true,
                 },
                 {
                     _id: Math.round(Math.random() * 1000000),
@@ -59,6 +62,8 @@ class Chat extends Component {
                         _id: 1,
                         name: 'Developer',
                     },
+                    sent: true,
+                    received: true,
                 },
                 {
                     _id: Math.round(Math.random() * 1000000),
@@ -107,13 +112,13 @@ class Chat extends Component {
                     system: true,
                 },
             ]
-        });
+        })
     }
 
     onSend(messages = []) {
         this.setState((previousState) => ({
             messages: GiftedChat.append(previousState.messages, messages),
-        }));
+        }))
     }
 
     render() {
@@ -157,30 +162,36 @@ class Chat extends Component {
                         },
                     ]}
                     isAnimated
+                    placeholder="Escribe tu mensaje..."
+                    renderSend={this.renderSend}
                 />
+
+                {
+                    Platform.OS === 'android' ? <KeyboardAvoidingView behavior={'padding'} /> : <View />
+                }
             </Container>
         )
     }
 
-    renderInputToolbar (props) {
+    renderInputToolbar(props) {
         return (
             <View style={{flex: 1}}>
-                <InputToolbar
-                    {...props}
-                    containerStyle={{borderTopWidth: 1.5, borderTopColor: '#333'}}
-                />
+                <InputToolbar {...props} />
             </View>
         )
     }
-}
 
-const styles = StyleSheet.create({
-    mapView: {
-        width: 150,
-        height: 100,
-        borderRadius: 13,
-        margin: 3,
-    },
-})
+    renderSend(props) {
+        return (
+            <Send
+                {...props}
+            >
+                <View style={{marginRight: 10, marginBottom: 5, background: '#cdcdcd'}}>
+                    <Icon name="md-send" />
+                </View>
+            </Send>
+        )
+    }
+}
 
 export default Chat

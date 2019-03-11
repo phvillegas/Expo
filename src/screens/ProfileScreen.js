@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import {Text, StyleSheet, Image, View, Dimensions} from 'react-native'
-import {Icon, Container, Content, Header, Body, Left, Right, Button} from 'native-base'
+import {Text, StyleSheet, Image, View, Dimensions, Platform} from 'react-native'
+import {Icon, Container, Content, Button} from 'native-base'
 import CardComponent from '../components/CardComponent'
 
 const images = [
@@ -16,8 +16,18 @@ const {width, height} = Dimensions.get('window')
 
 export default class ProfileScreen extends Component {
     static navigationOptions = {
-        header: null,
-        title: 'Profile',
+        title: 'don_gatito',
+        headerLeft: <Icon name="ios-timer" style={{paddingLeft: 10}} />,
+        headerRight: <Icon name="ios-menu" style={{paddingRight: 10}} />,
+        headerStyle: {
+            ...Platform.select({
+                android: {
+                    borderBottomWidth: 1,
+                    borderColor: '#cdcdcd',
+                    elevation: 0,
+                },
+            })
+        },
     }
 
     state = {
@@ -27,17 +37,6 @@ export default class ProfileScreen extends Component {
     render() {
         return (
             <Container style={styles.container}>
-                <Header>
-                    <Left>
-                        <Icon name="ios-timer" style={{paddingLeft: 10}} />
-                    </Left>
-                    <Body>
-                        <Text style={{fontWeight: 'bold', fontSize: 15}}>don_gatito</Text>
-                    </Body>
-                    <Right>
-                        <Icon name="ios-menu" style={{paddingRight: 10}} />
-                    </Right>
-                </Header>
                 <Content>
                     <View style={{paddingTop: 10}}>
                         <View style={{flexDirection: 'row'}}>

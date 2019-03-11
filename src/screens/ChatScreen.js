@@ -1,9 +1,19 @@
 import React, {Component} from 'react'
-import {Container, Content, List, ListItem, Left, Body, Right, Thumbnail, Icon, Text, SwipeRow, View, Button} from 'native-base'
+import {Platform} from 'react-native'
+import {Container, Content, List, ListItem, Left, Body, Right, Thumbnail, Icon, Text} from 'native-base'
 
 export default class ChatScreen extends Component {
     static navigationOptions = {
         title: 'Mensajes',
+        headerStyle: {
+            ...Platform.select({
+                android: {
+                    borderBottomWidth: 1,
+                    borderColor: '#cdcdcd',
+                    elevation: 0,
+                },
+            }),
+        },
     }
 
     render() {
@@ -57,9 +67,6 @@ export default class ChatScreen extends Component {
                             </Right>
                         </ListItem>
                     </List>
-
-
-
                 </Content>
             </Container>
         )

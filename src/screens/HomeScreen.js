@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {StyleSheet, View, ScrollView, Text, Linking} from 'react-native'
+import {StyleSheet, View, ScrollView, Text, Linking, Platform} from 'react-native'
 import {Icon, Container, Content, Thumbnail} from 'native-base'
 import CardComponent from '../components/CardComponent'
 
@@ -8,6 +8,15 @@ export default class HomeScreen extends Component {
         title: 'GuascaFM',
         headerLeft: <Icon name="ios-camera" style={{paddingLeft: 10}} />,
         headerRight: <Icon name="ios-call" style={{paddingRight: 10}} onPress={() => {Linking.openURL(`tel:123333`)}} />,
+        headerStyle: {
+            ...Platform.select({
+                android: {
+                    borderBottomWidth: 1,
+                    borderColor: '#cdcdcd',
+                    elevation: 0,
+                },
+            })
+        },
     }
 
     render() {
