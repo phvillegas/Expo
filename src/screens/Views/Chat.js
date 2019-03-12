@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {ActivityIndicator, View, KeyboardAvoidingView, Platform} from 'react-native'
 import {GiftedChat, InputToolbar, Send} from 'react-native-gifted-chat'
-import {Container, Header, Left, Right, Button, Icon, Text, Thumbnail} from 'native-base'
+import {Container, Left, Right, Button, Icon, Text, Thumbnail, Header, Body} from 'native-base'
 
 class Chat extends Component {
     state = {
@@ -127,12 +127,15 @@ class Chat extends Component {
                 <Header>
                     <Left>
                         <Button transparent onPress={() => this.props.navigation.goBack()}>
-                            <Icon name="ios-arrow-back" />
-                            <Text style={{color: '#000', marginLeft: 20}}>
-                                {this.props.navigation.getParam('name')}
-                            </Text>
+                            <Icon name={Platform.OS === 'ios' ? 'ios-arrow-back' : 'ios-arrow-back'} style={{color: '#000'}} />
                         </Button>
                     </Left>
+
+                    <Body>
+                        <Text style={{color: '#000'}}>
+                            {this.props.navigation.getParam('name')}
+                        </Text>
+                    </Body>
 
                     <Right>
                         <Button transparent onPress={() => alert('Foto')}>
