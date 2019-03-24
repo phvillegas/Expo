@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {ActivityIndicator, View, KeyboardAvoidingView, Platform} from 'react-native'
 import {GiftedChat, InputToolbar, Send} from 'react-native-gifted-chat'
-import {Container, Left, Right, Button, Icon, Text, Thumbnail, Header, Body} from 'native-base'
+import {Container, Left, Right, Button, Icon, Text, Thumbnail, Header, Body, CardItem} from 'native-base'
 
 class Chat extends Component {
     state = {
@@ -178,9 +178,19 @@ class Chat extends Component {
 
     renderInputToolbar(props) {
         return (
-            <View style={{flex: 1}}>
-                <InputToolbar {...props} />
-            </View>
+            <InputToolbar
+                {...props}
+                renderActions={
+                    () => {
+                        return (
+                            <Button onPress={() => alert('audio')} transparent style={{alignSelf: 'center'}}>
+                                <Icon name='ios-mic' style={{fontSize: 30}} />
+                            </Button>
+                        )
+                    }
+                }
+                onPressActionButton={() => alert('tab')}
+            />
         )
     }
 
@@ -189,8 +199,16 @@ class Chat extends Component {
             <Send
                 {...props}
             >
-                <View style={{marginRight: 10, marginBottom: 5, background: '#cdcdcd'}}>
-                    <Icon name="md-send" />
+                <View style={{
+                    marginRight: 10,
+                    marginBottom: 5,
+                }}>
+                    <Icon name="md-send" style={{
+                        color: '#3880ff',
+                        alignSelf: 'center',
+                        verticalAlign: 'center',
+                        alignItems: 'center'
+                    }}/>
                 </View>
             </Send>
         )

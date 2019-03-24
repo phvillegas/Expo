@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
-import {Image} from 'react-native'
+import {Dimensions, Platform} from 'react-native'
 import {Card, CardItem, Left, Right, Thumbnail, Button, Icon, Body, Text} from 'native-base'
+import Image from 'react-native-scalable-image'
 
 class CardComponent extends Component {
     render() {
@@ -19,18 +20,27 @@ class CardComponent extends Component {
                     </Right>
                 </CardItem>
                 <CardItem cardBody>
-                    <Image source={require('../assets/images/cat.jpeg')} style={{height: 200, width: null, flex: 1}} />
+                    <Image
+                        source={require('../assets/images/cat3.jpg')}
+                        width={Dimensions.get('window').width}
+                    />
                 </CardItem>
                 <CardItem style={{height: 40}}>
                     <Left>
                         <Button transparent>
-                            <Icon name="ios-heart-empty" style={{color: '#000', fontSize: 30}} />
+                            <Icon
+                                name="ios-heart-empty"
+                                style={{color: 'grey', fontSize: 30}}
+                            />
                         </Button>
                         <Button transparent>
                             <Icon name="ios-chatbubbles" style={{color: 'grey', fontSize: 30}}/>
                         </Button>
                         <Button transparent>
-                            <Icon name="md-share" style={{color: '#000', fontSize: 30}}/>
+                            <Icon
+                                name={Platform.OS === 'ios' ? 'ios-share' : 'md-share'}
+                                style={{color: '#777', fontSize: 30}}
+                            />
                         </Button>
                     </Left>
                     <Right>
